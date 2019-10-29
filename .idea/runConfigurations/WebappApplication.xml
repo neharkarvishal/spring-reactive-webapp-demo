@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="WebappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="webapp.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.springreactive.webapp.WebappApplication" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
