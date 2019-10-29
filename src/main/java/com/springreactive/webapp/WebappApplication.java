@@ -35,7 +35,7 @@ public class WebappApplication {
       String name = request.queryParam("name").get();
       String reversed = reverse(name);
       return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
-          .body(BodyInserters.fromObject("Hello, " + reversed + "!"));
+          .body(BodyInserters.fromValue("Hello, " + reversed + "!"));
     }
 
     String reverse(@NotNull String text) {
@@ -45,4 +45,3 @@ public class WebappApplication {
     }
   }
 }
-
