@@ -1,5 +1,6 @@
 package com.springreactive.webapp;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +22,7 @@ public class WebappApplication {
   }
 
   @Bean
-  public RouterFunction<ServerResponse> route(GreetingsHandler greetingHandler) {
+  public RouterFunction<ServerResponse> route(@NotNull GreetingsHandler greetingHandler) {
     return RouterFunctions
         .route(RequestPredicates.GET("/hello").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
             greetingHandler::hello);
@@ -30,14 +31,14 @@ public class WebappApplication {
   @Component
   class GreetingsHandler {
 
-    public Mono<ServerResponse> hello(ServerRequest request) {
+    public Mono<ServerResponse> hello(@NotNull ServerRequest request) {
       String name = request.queryParam("name").get();
       String reversed = reverse(name);
       return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
           .body(BodyInserters.fromObject("Hello, " + reversed + "!"));
     }
 
-    String reverse(String text) {
+    String reverse(@NotNull String text) {
       return text.chars()
           .mapToObj(c -> (char) c)
           .reduce("", (s, c) -> c + s, (s1, s2) -> s2 + s1);
